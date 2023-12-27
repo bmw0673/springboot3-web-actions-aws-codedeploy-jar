@@ -49,7 +49,7 @@ jobs:
       run: |
         aws deploy push \
           --application-name ${{ secrets.CODEDEPLOY_APPLICATION_NAME }}\
-          --description "This is a revision for the application My_App" \
+          --description "This is a revision for the application my_App" \
           --ignore-hidden-files \
           --s3-location s3://${{ secrets.S3_LOCATION_BUCKET }}/$GITHUB_SHA.zip \
           --source .
