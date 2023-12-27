@@ -37,7 +37,21 @@ jobs:
       with:
         arguments: build
     # AWS 사용자 인증
-
+    - name: Configure AWS credentials
+        uses: aws-actions/configure/aws-credentials@v1-node16
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID} }
+          aws-secret-access-Key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          
     # AWS S3 UPLOAD
-
+    - name: Upload to AWS S3
+      run: |
+        aws deploy push \
+          --application-name ${{ secrets.CODEDEPLOY_APPLICATION_NAME }}\
+          --description "This is a revision for the application My_App" \
+          --ignore-hidden-files \
+          --s3-location s3://${{ secrets.S3_LOCATION_BUCKET }}/$GITHUB_SHA.zip \
+          --source .
+    
     # S3 -> EC2 배포
