@@ -28,6 +28,10 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    # gradlew 실행 권한 부여
+    - name: Grant execute for gradlew
+      run: chmod +x gradlew
+    # 빌드
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2 # v2.6.0
       with:
