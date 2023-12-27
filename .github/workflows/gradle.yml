@@ -36,3 +36,8 @@ jobs:
       uses: gradle/gradle-build-action@v2 # v2.6.0
       with:
         arguments: build
+    # AWS 사용자 인증
+
+    # AWS S3 UPLOAD
+
+    # S3 -> EC2 배포
